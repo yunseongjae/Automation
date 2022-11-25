@@ -60,7 +60,7 @@ class preprocess:
 
         send_response = requests.post(send_url, data=sms_data[0])
 
-        return send_response.json()
+        return send_response.json()['success_cnt']
 st.header("상시챌린지 자동 문자발송 시스템")
 
 
@@ -77,8 +77,6 @@ with col2:
 if reg_list is not None:
     df_total = pd.read_excel(reg_list)
     df_total_result, msg_dict_result = preprocess.processing(df_total)
-    st.dataframe(df_total_result)
-
 
 
 if msg_list is not None:
@@ -91,10 +89,7 @@ if msg_list is not None:
     if st.button("메세지 전송하기"):
         for i in message_result:
             i_dict = i.to_dict('records')
-            st.write(i)
-            st.write(i_dict)
-            st.write(preprocess.send_msg(i_dict))
-
-
-
-        st.write("전송 완료되었습니다.")
+            if preprocess.send_msg(i_dict) == 1:
+                print("전송 완료되었습니다.")
+            else:
+                print("전송 실패하였습니다. 01089381835로 연락주세요.")
