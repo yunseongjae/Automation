@@ -60,7 +60,7 @@ class preprocess:
 
         send_response = requests.post(send_url, data=sms_data[0])
 
-        return send_response.json()['success_cnt']
+        return send_response.json()
 st.header("상시챌린지 자동 문자발송 시스템")
 
 
