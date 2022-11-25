@@ -89,7 +89,8 @@ if msg_list is not None:
     if st.button("메세지 전송하기"):
         for i in message_result:
             i_dict = i.to_dict('records')
-            if preprocess.send_msg(i_dict) == 1:
+            response = preprocess.send_msg(i_dict) 
+            if response == "1":
                 print("전송 완료되었습니다.")
             else:
-                print("전송 실패하였습니다. 01089381835로 연락주세요.")
+                print("전송 실패하였습니다. ")
