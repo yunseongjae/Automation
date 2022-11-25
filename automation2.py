@@ -91,6 +91,6 @@ if msg_list is not None:
             i_dict = i.to_dict('records')
             response = preprocess.send_msg(i_dict) 
             if response == "1":
-                print("전송 완료되었습니다.")
+                st.write("전송 완료되었습니다.")
             else:
-                print("전송 실패하였습니다. ")
+                st.write("전송 실패하였습니다. ")
